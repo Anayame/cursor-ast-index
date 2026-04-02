@@ -86,9 +86,9 @@ npx --yes @vscode/vsce package
 3. Пример текста:
 
 ```text
-Используй CLI ast-index для быстрого поиска по коду вместо grep/find там, где это уместно.
-Перед первым использованием в новом проекте выполни `ast-index rebuild`, после изменений — `ast-index update`.
-Команды: ast-index search, class, symbol, implementations, usages, callers, outline, file, deps и др. (см. ast-index --help).
+Use the ast-index CLI for fast code search instead of grep/find where appropriate.
+In a new project, run `ast-index rebuild` before first use; after substantial code changes, run `ast-index update`.
+Commands include: ast-index search, class, symbol, implementations, usages, callers, outline, file, deps, and more (see `ast-index --help`).
 ```
 
 ### Правила в репозитории
