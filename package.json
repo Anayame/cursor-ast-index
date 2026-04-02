@@ -1,0 +1,101 @@
+{
+  "name": "ast-index",
+  "displayName": "ast-index",
+  "description": "Терминалы ast-index rebuild/watch, кнопка установки и правил",
+  "version": "0.0.1",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "ast-index",
+      "properties": {
+        "ast-index.rebuildOnStartup": {
+          "type": "boolean",
+          "default": true,
+          "description": "При открытии окна запускать «ast-index rebuild» в новом терминале (корень — открытая папка)."
+        },
+        "ast-index.watchOnStartup": {
+          "type": "boolean",
+          "default": true,
+          "description": "При открытии окна запускать «ast-index watch» в отдельном новом терминале."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "ast-index.installAstIndex",
+        "title": "Установить ast-index",
+        "icon": "$(cloud-download)"
+      },
+      {
+        "command": "ast-index.rebuild",
+        "title": "Запустить ast-index rebuild",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "ast-index.start",
+        "title": "Запустить ast-index watch",
+        "icon": "$(terminal)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "astIndex",
+          "title": "AST Index",
+          "icon": "resources/activity.svg"
+        }
+      ]
+    },
+    "views": {
+      "astIndex": [
+        {
+          "id": "astIndexView",
+          "name": "Watch"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "ast-index.installAstIndex",
+          "when": "view == astIndexView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "ast-index.rebuild",
+          "when": "view == astIndexView",
+          "group": "navigation@2"
+        },
+        {
+          "command": "ast-index.start",
+          "when": "view == astIndexView",
+          "group": "navigation@3"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "ast-index.rebuild"
+        },
+        {
+          "command": "ast-index.start"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.5.0"
+  }
+}
